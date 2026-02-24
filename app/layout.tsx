@@ -1,12 +1,30 @@
 import type { Metadata } from 'next';
+import { Roboto } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 
+const roboto = Roboto({
+  weight: ['400', '500', '700'],
+  variable: '--font-roboto',
+  display: 'swap',
+  subsets: ['latin'],
+});
+
 export const metadata: Metadata = {
   title: 'NoteHub',
   description: 'A simple and efficient application for managing personal notes',
+  openGraph: {
+    title: 'NoteHub',
+    description: 'A simple and efficient application for managing personal notes',
+    url: 'https://notehub.vercel.app',
+    images: [
+      {
+        url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -17,7 +35,7 @@ export default function RootLayout({
   modal: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={roboto.variable}>
       <body>
         <TanStackProvider>
           <Header />
